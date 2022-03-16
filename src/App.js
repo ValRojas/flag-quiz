@@ -9,7 +9,7 @@ function App() {
   return ( 
       <BrowserRouter>
           <Routes>          
-            <Route exact path='/' element={<Home/>}/>
+            <Route exact path='/flags-quiz' element={<Home/>}/>
             <Route exact path='/GuessFlag' element={<GuessFlag/>}/>
             <Route exact path='/GuessCountry' element={<GuessCountry/>}/>
             <Route exact path='/ChooseCategory' element={<ChooseCategory/>}/>
