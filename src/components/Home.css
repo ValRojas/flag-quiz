@@ -44,7 +44,6 @@ body{
     border-radius: 5px;
     width: 800px;
     height: 420px;
-    
 }
 
 /*Games box*/
@@ -57,4 +56,42 @@ body{
     width: 250px;
     height: 400px;
     margin: 10px;
+}
+
+/*recordar hacer uno para medidas de costado del celular o minimizadas en una cuarta parte de la pantalla*/
+@media(max-width: 730px){
+    #title{
+        font-size: 26px;
+        height: 45px;
+    }
+    #container{
+        width: 550px;
+        height: 650px;
+    }
+    #Games-container{
+        width: 450px;
+        height: 500px;
+        flex-direction: column;
+    }
+    #choose{
+        width: 420px;
+        height: 130px;
+    }
+}
+
+@media(max-width: 730px) and (max-height: 500px){
+    #container{
+        width: 550px;
+        height: 250px;
+        margin: 10px;
+    }
+    #Games-container{
+        width: 450px;
+        height: 150px;
+        flex-direction: row;
+    }
+    #choose{
+        width: 130px;
+        height: 110px;
+    }
 }
