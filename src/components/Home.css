@@ -58,7 +58,7 @@ body{
     margin: 10px;
 }
 
-/*recordar hacer uno para medidas de costado del celular o minimizadas en una cuarta parte de la pantalla*/
+/*Costado*/
 @media(max-width: 730px){
     #title{
         font-size: 26px;
@@ -79,7 +79,28 @@ body{
     }
 }
 
-@media(max-width: 730px) and (max-height: 500px){
+/*Celulares*/
+@media(max-width: 530px){
+    #title{
+        font-size: 26px;
+        height: 45px;
+    }
+    #container{
+        width: 370px;
+        height: 650px;
+    }
+    #Games-container{
+        width: 290px;
+        height: 500px;
+        flex-direction: column;
+    }
+    #choose{
+        width: 236px;
+        height: 130px;
+    }
+}
+
+@media(max-height: 500px){
     #container{
         width: 550px;
         height: 250px;
@@ -93,5 +114,6 @@ body{
     #choose{
         width: 130px;
         height: 110px;
+        font-size: 18px;
     }
 }
