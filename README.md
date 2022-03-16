@@ -22,5 +22,5 @@ The page will reload when you make changes.
 
 ## Sources
 
-Flags on Flagpedia [https://flagpedia.net/]
+Flags on Flagpedia [https://flagpedia.net/]\
 npm world-countries-capitals [https://www.npmjs.com/package/world-countries-capitals]
