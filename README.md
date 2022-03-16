@@ -1,7 +1,6 @@
 ## Run demo
 
-Flags quiz made with ReactJs\
-
+Flags quiz made with ReactJs
 
 ## Run demo
 
@@ -12,7 +11,7 @@ https://valrojas.github.io/flags-quiz/
 In the project directory, you can run:
 
 `git clone https://github.com/ValRojas/flags-quiz.git`\
-`cd flag-quiz`\
+`cd flags-quiz`\
 `npm install (optional -timeout=60000)`\
 `npm start`
 
