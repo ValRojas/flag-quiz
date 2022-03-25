@@ -17,3 +17,17 @@
     width: 120px;
     margin: 20px 10px;
 }
+
+/*Phone*/
+@media(max-width: 530px){
+    #flagsContainer{
+        width: 290px;
+        height: 520px;
+        padding: 15px;
+    }
+    #flags{
+        height: 55px;
+        width: 95px;
+        margin: 14px 10px;
+    }
+}

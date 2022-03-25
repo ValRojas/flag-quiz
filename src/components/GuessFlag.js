@@ -36,6 +36,8 @@ class GuessFlag extends React.Component{
       this.state = {}
     }
 
+
+
     render(){ 
       const options = FlagOptions().map(mapa => <a className="flagsButton"><img src={mapa} id="flags"></img></a>)
       return(
@@ -46,7 +48,6 @@ class GuessFlag extends React.Component{
             {options}
           </div>
 
-          <div>In progress</div>
         </div>
       )
     }
