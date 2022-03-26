@@ -18,6 +18,20 @@
     margin: 20px 10px;
 }
 
+/*Side*/
+@media(max-width: 730px){
+    #flagsContainer{
+        width: 450px;
+        height: 450px;
+        padding: 15px;
+    }
+    #flags{
+        height: 70px;
+        width: 110px;
+        margin: 20px 5px;
+    }
+}
+
 /*Phone*/
 @media(max-width: 530px){
     #flagsContainer{
@@ -29,5 +43,23 @@
         height: 55px;
         width: 95px;
         margin: 14px 10px;
+    }
+}
+
+
+/*Min*/
+@media(max-height: 500px){
+    #title{
+        font-size: 20px;
+        height: 30px;
+    }
+    #flagsContainer{
+        width: 450px;
+        height: 150px;
+    }
+    #flags{
+        height: 35px;
+        width: 60px;
+        margin: 7px 10px;
     }
 }

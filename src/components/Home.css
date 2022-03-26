@@ -58,7 +58,7 @@ body{
     margin: 10px;
 }
 
-/*Costado*/
+/*Side*/
 @media(max-width: 730px){
     #title{
         font-size: 26px;
@@ -79,7 +79,7 @@ body{
     }
 }
 
-/*Celulares*/
+/*Phone*/
 @media(max-width: 530px){
     #title{
         font-size: 26px;
@@ -100,7 +100,9 @@ body{
     }
 }
 
+/*Min*/
 @media(max-height: 500px){
+    
     #container{
         width: 550px;
         height: 250px;
