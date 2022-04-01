@@ -1,3 +1,4 @@
+
 /*Flag content*/
 #flagsContainer{
     background-color:rgb(248, 248, 248);
@@ -7,17 +8,23 @@
     padding: 20px;
 }
 
-.flagsButton{
-    margin: 30px 15px;
-}
+/*
+button {
+    all: unset;
+    cursor: pointer;
+    background-color: Transparent;
+  }
+*/
 
-#flags{
-    background-color: white;
+.flags{
     height: 80px;
     width: 120px;
-    margin: 20px 10px;
+    margin: 25px 27px;
 }
 
+.flags:hover{
+    outline: 4px solid rgb(160, 151, 153);
+}
 /*Side*/
 @media(max-width: 730px){
     #flagsContainer{
@@ -25,10 +32,10 @@
         height: 450px;
         padding: 15px;
     }
-    #flags{
+    .flags{
         height: 70px;
         width: 110px;
-        margin: 20px 5px;
+        margin: 20px 18px;
     }
 }
 
@@ -39,10 +46,10 @@
         height: 520px;
         padding: 15px;
     }
-    #flags{
+    .flags{
         height: 55px;
         width: 95px;
-        margin: 14px 10px;
+        margin: 14px 25px;
     }
 }
 
@@ -57,9 +64,9 @@
         width: 450px;
         height: 150px;
     }
-    #flags{
+    .flags{
         height: 35px;
         width: 60px;
-        margin: 7px 10px;
+        margin: 7px 25px;
     }
 }

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Changa+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Forum&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
 body,
 #container,
@@ -11,52 +10,53 @@ body,
 }
 
 body{
-    background-color: #C5D8A4;
+    background-color: #9eb675;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #container{
+    flex-direction: column;
     background-color:#ffff;
     width: 900px;
     height: 580px;
-    border-radius: 7px;
-    box-shadow: -14px 14px 19px -1px #a8c091;
-    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: -14px 14px 19px -1px rgb(119, 141, 97);
     margin: 35px;
 }
 
 /*Home*/
 #title{
-    background-color: #bb9981fb;
     font-size: 28px;
-    border-radius: 15px;
-    width: 300px;
-    height: 60px;
-    font-family: 'Forum', cursive;
-    margin-top: 2px;
+    font-family: 'Roboto', sans-serif;
 }
 
-/*Games container*/
-#Games-container{
-    background-color:rgb(248, 248, 248);
-    border-radius: 5px;
-    width: 800px;
-    height: 420px;
-}
 
 /*Games box*/
 #choose{
-    color: black;
-    font-size: 25px;
-    font-family: 'Changa One', cursive;
-    border: 4px double #534340;
-    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.486), rgba(255, 255, 255, 0.486)), url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Collection-national-flags.png/1024px-Collection-national-flags.png");
+    right: 150px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
     width: 250px;
     height: 400px;
     margin: 10px;
+    background-size:auto;
+    background-attachment: inherit;
+    background-repeat: no-repeat;
+    background-position:bottom;
+
 }
+
+/*Choose flags background*/
+.GuessFlag{
+    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://altavistaclub.com/blog/wp-content/uploads/2019/01/Coliseo-Romano.jpeg");}
+.GuessCountry{
+    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://dam.tbg.com.mx/content/dam/editorialTelevisa/mexico/natgeo/mx/fotografia/fotogalerias/15/09/7-maravillas-medernas-1.jpg.imgo.jpg");}
+.ChooseCategory{
+    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://www.actualidadviajes.com/wp-content/uploads/2020/10/Petra.jpg");}
 
 /*Side*/
 @media(max-width: 730px){

@@ -13,9 +13,9 @@ class Home extends React.Component{
              <h1 id="title">Flag Quiz</h1>
 
             <div id="Games-container">
-                <Link to="/GuessFlag"><button id="choose">Guess the flag</button></Link>
-                <Link to="/GuessCountry"><button id="choose">Guess the country</button></Link>
-                <Link to="/ChooseCategory"><button id="choose">Choose Category</button></Link>
+                <Link to="/GuessFlag"><button id="choose" className="GuessFlag">Guess the flag</button></Link>
+                <Link to="/GuessCountry"><button id="choose" className="GuessCountry">Guess the country</button></Link>
+                <Link to="/ChooseCategory"><button id="choose" className="ChooseCategory">Choose Category</button></Link>
             </div>
         </div>
       )
