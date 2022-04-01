@@ -1,4 +1,3 @@
-
 /*Flag content*/
 #flagsContainer{
     background-color:rgb(248, 248, 248);
@@ -15,7 +14,17 @@ button {
     background-color: Transparent;
   }
 */
-
+#countryname{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 23px;
+    border-radius: 5px;
+    width: 450px;
+    height: 45px;
+    background-image:linear-gradient(200deg, rgba(22, 18, 31, 0.014), rgba(0, 0, 0, 0.527)), url("https://i.pinimg.com/736x/d1/63/80/d16380167c4036f23ecd01b6977897fe.jpg");
+}
 .flags{
     height: 80px;
     width: 120px;
@@ -41,6 +50,9 @@ button {
 
 /*Phone*/
 @media(max-width: 530px){
+    #countryname{
+        width: 320px;
+    }
     #flagsContainer{
         width: 290px;
         height: 520px;

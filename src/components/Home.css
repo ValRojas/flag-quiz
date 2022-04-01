@@ -131,10 +131,13 @@ p{
 
 /*Min*/
 @media(max-height: 500px){
-    
+    #title-container{
+        width: 470px;
+        margin-bottom: 10px;
+    }
     #container{
         width: 550px;
-        height: 250px;
+        height: 300px;
         margin: 10px;
     }
     #Games-container{
@@ -144,7 +147,7 @@ p{
     }
     #choose{
         width: 130px;
-        height: 110px;
+        height: 170px;
         font-size: 18px;
     }
 }
