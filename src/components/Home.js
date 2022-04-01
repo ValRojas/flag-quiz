@@ -10,12 +10,29 @@ class Home extends React.Component{
     render(){
       return(
         <div id="container">
-             <h1 id="title">Flag Quiz</h1>
+            <div id="title-container">
+              <h1 id="title">Flags Quiz</h1>
+            </div>
 
             <div id="Games-container">
-                <Link to="/GuessFlag"><button id="choose" className="GuessFlag">Guess the flag</button></Link>
-                <Link to="/GuessCountry"><button id="choose" className="GuessCountry">Guess the country</button></Link>
-                <Link to="/ChooseCategory"><button id="choose" className="ChooseCategory">Choose Category</button></Link>
+
+                <div id="choose" className="GuessFlag">    
+                  <h2>Flags</h2>        
+                  <p>A country name will be shown to you, guess the flag that belongs to it</p> 
+                  <Link to="/GuessFlag"><button id="redirect">start playing →</button></Link>  
+                </div>
+
+                <div id="choose" className="GuessCountry">    
+                  <h2>Countries</h2>        
+                  <p>A flag will be shown to you, guess the name that belongs to it</p> 
+                  <Link to="/GuessCountry"><button id="redirect">start playing →</button></Link>  
+                </div>
+
+                <div id="choose" className="ChooseCategory">    
+                  <h2>Categories</h2>        
+                  <p>Guess capital, phone code, drive direction or alcohol prohibition</p> 
+                  <Link to="/ChooseCategory"><button id="redirect">start playing →</button></Link>  
+                </div>
             </div>
         </div>
       )

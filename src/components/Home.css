@@ -10,7 +10,7 @@ body,
 }
 
 body{
-    background-color: #9eb675;
+    background-color: #4b3939;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@ body{
     width: 900px;
     height: 580px;
     border-radius: 5px;
-    box-shadow: -14px 14px 19px -1px rgb(119, 141, 97);
+    box-shadow: -14px 14px 19px -1px #20221c;
     margin: 35px;
 }
 
@@ -32,37 +32,64 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+#title-container{
+    display: flex;
+    align-items: center;
+    width: 790px;
+}
 
 /*Games box*/
 #choose{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
     right: 150px;
-    cursor: pointer;
     color: white;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    width: 250px;
-    height: 400px;
+    width: 230px;
+    height: 380px;
     margin: 10px;
     background-size:auto;
     background-attachment: inherit;
     background-repeat: no-repeat;
     background-position:bottom;
+    padding: 10px;
+}
 
+h2{
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+}
+
+p{
+    font-size: 13px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+#redirect{
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    width: 120px;
+    height: 40px;
 }
 
 /*Choose flags background*/
 .GuessFlag{
-    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://altavistaclub.com/blog/wp-content/uploads/2019/01/Coliseo-Romano.jpeg");}
+    background-image:linear-gradient(200deg, rgba(22, 18, 31, 0.014), rgba(0, 0, 0, 0.527)), url("https://i.pinimg.com/736x/d1/63/80/d16380167c4036f23ecd01b6977897fe.jpg");}
 .GuessCountry{
-    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://dam.tbg.com.mx/content/dam/editorialTelevisa/mexico/natgeo/mx/fotografia/fotogalerias/15/09/7-maravillas-medernas-1.jpg.imgo.jpg");}
+    background-image:linear-gradient(115deg, rgba(22, 18, 31, 0.014), rgba(0, 0, 0, 0.527)), url("https://as1.ftcdn.net/v2/jpg/02/35/08/90/1000_F_235089049_1vbv6tn8pWC3y2nmKIywIR6W7S3oBqP2.jpg");}
 .ChooseCategory{
-    background-image:linear-gradient(115deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.041)), url("https://www.actualidadviajes.com/wp-content/uploads/2020/10/Petra.jpg");}
+    background-image:linear-gradient(115deg, rgba(22, 18, 31, 0.014), rgba(0, 0, 0, 0.527)), url("https://www.artyfactory.com/art_appreciation/great-artists/claude-monet/monet-images/monet-irises.jpg");}
 
 /*Side*/
 @media(max-width: 730px){
+    #title-container{
+        width: 420px;
+    }
     #title{
         font-size: 26px;
-        height: 45px;
     }
     #container{
         width: 550px;
@@ -81,9 +108,11 @@ body{
 
 /*Phone*/
 @media(max-width: 530px){
+    #title-container{
+        width: 230px;
+    }
     #title{
         font-size: 26px;
-        height: 45px;
     }
     #container{
         width: 370px;
