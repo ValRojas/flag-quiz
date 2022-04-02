@@ -6,12 +6,12 @@ const wcc = require('world-countries-capitals');
 const CountryName = wcc.getRandomCountry();
 const FlagToGuess = wcc.getCountryDetailsByName(CountryName);
 
-let selected = []
+let Selected = [CountryName]
 
 //Creates other flag options
 const FlagOptions = function(){
   let array = []
-  let randomNum = Math.floor(Math.random() * (11 - 1) + 1) //random number to hide chosen flag
+  let randomNum = Math.floor(Math.random() * (12 - 1) + 1) //random number to hide chosen flag
 
    //keep looping till completes twelve unrepeated flags
   for(let i = 0; array.length < 12; i++){
@@ -27,52 +27,64 @@ const FlagOptions = function(){
      //doesn't let flags repeat
     if(randomFlag != FlagToGuess[0]['flag'] && array.indexOf(randomFlag) == -1){
       array.push(randomFlag)
-      selected.push(select)
+      Selected.push(select)
     }
   }
   return array
 }
-
 const Options = FlagOptions()
 
 class GuessFlag extends React.Component{
     constructor(props){
       super(props)
-      this.state = {
-        border: {},
-        title: CountryName
-      }
+      this.state = {title: CountryName, options: Options, selected: Selected, array:[]}
       this.clickButton = this.clickButton.bind(this)
       this.changleTitle = this.changleTitle.bind(this)
+      this.arrayChecker = this.arrayChecker.bind(this)
     }
 
+    //Clicked flag
     clickButton(e){
       let selected = e.target.value //link as id
       let flag = wcc.getCountryDetailsByName(this.state.title); //creates an object
 
        if(flag[0]['flag'] == selected){
         document.getElementById(flag[0]['flag']).style.outline="4px solid green";
+        document.getElementById(flag[0]['flag']).style.pointerEvents="none";
 
         setTimeout(() => {
-          document.getElementById(flag[0]['flag']).style.outline="none";
           this.changleTitle()
         }, 1000)
 
        }else{
         document.getElementById(selected).style.outline="4px solid red";
+        setTimeout(() => {
+          document.getElementById(selected).style.outline="none";
+        }, 1000)
+
        }
     }
 
+    //Select random number set title state
     changleTitle(){
-      document.getElementsByClassName('flags').style.outline="none"
-      
+      let number = this.arrayChecker()
       this.setState(state =>({
-        title: ""
+        title: this.state.selected[number]
       }))
     }
 
+    /*cosas a tener en cuenta
+    ir sacando los nombres de los paises ganados de SELECTED
+    si SELECTED queda en 0, restart todo
+    */
+
+    //Prevents name flag repeats, returns another random names
+    arrayChecker(){
+      return 8
+    }
+
     render(){
-      const options = Options.map(road => 
+      const options = this.state.options.map(road => 
         <input type="image" src={road} className="flags" id={road} value={road} onClick={this.clickButton}/>)
 
       return(
