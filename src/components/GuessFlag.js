@@ -11,7 +11,7 @@ let Selected = [CountryName]
 //Creates other flag options
 const FlagOptions = function(){
   let array = []
-  let randomNum = Math.floor(Math.random() * (12 - 1) + 1) //random number to hide chosen flag
+  let randomNum = Math.floor(Math.random() * (11 - 1) + 1) //random number to hide chosen flag
 
    //keep looping till completes twelve unrepeated flags
   for(let i = 0; array.length < 12; i++){
