@@ -6,7 +6,7 @@ const wcc = require('world-countries-capitals');
 const CountryName = wcc.getRandomCountry();
 const FlagToGuess = wcc.getCountryDetailsByName(CountryName);
 
-let Selected = [CountryName]
+let Names = [CountryName]
 
 //Creates other flag options
 const FlagOptions = function(){
@@ -20,14 +20,14 @@ const FlagOptions = function(){
     let randomFlag = country[0]['flag'] //shortcut
 
      //hides flag randomly
-    if(i == randomNum){
+    if(i === randomNum){
       array.push(FlagToGuess[0]['flag'])
     }
 
      //doesn't let flags repeat
-    if(randomFlag != FlagToGuess[0]['flag'] && array.indexOf(randomFlag) == -1){
+    if(randomFlag !== FlagToGuess[0]['flag'] && array.indexOf(randomFlag) === -1){
       array.push(randomFlag)
-      Selected.push(select)
+      Names.push(select)
     }
   }
   return array
@@ -37,8 +37,7 @@ const Options = FlagOptions()
 class GuessFlag extends React.Component{
     constructor(props){
       super(props)
-      this.state = {title: CountryName, options: Options, selected: Selected, array:[]}
-      this.clickButton = this.clickButton.bind(this)
+      this.state = {title: CountryName, options: Options, names: Names, array:[]}
       this.changleTitle = this.changleTitle.bind(this)
       this.arrayChecker = this.arrayChecker.bind(this)
     }
@@ -48,7 +47,7 @@ class GuessFlag extends React.Component{
       let selected = e.target.value //link as id
       let flag = wcc.getCountryDetailsByName(this.state.title); //creates an object
 
-       if(flag[0]['flag'] == selected){
+       if(flag[0]['flag'] === selected){
         document.getElementById(flag[0]['flag']).style.outline="4px solid green";
         document.getElementById(flag[0]['flag']).style.pointerEvents="none";
 
@@ -65,27 +64,49 @@ class GuessFlag extends React.Component{
        }
     }
 
-    //Select random number set title state
+    //Change country name by an unrepeated one
     changleTitle(){
       let number = this.arrayChecker()
+
       this.setState(state =>({
-        title: this.state.selected[number]
+        title: this.state.names[number]
       }))
     }
-
-    /*cosas a tener en cuenta
-    ir sacando los nombres de los paises ganados de SELECTED
-    si SELECTED queda en 0, restart todo
-    */
-
-    //Prevents name flag repeats, returns another random names
+    
+    //returns an index
     arrayChecker(){
-      return 8
+      //lista nombres banderas
+      let list = this.state.names
+
+      //si la lista tiene el titulo, entonces se lo saco
+      //si no lo tiene, es por callback
+
+      if(list.indexOf(this.state.title) >= 0){
+        list.splice(list.indexOf(this.state.title), 1)
+      }
+
+      //saco numero random con lista actualizada. Despues de haber sacado los que faltan
+      let randomNumber = Math.floor(Math.random() * list.length)
+
+      //si el array no tiene el titulo actual, lo agrego al array, además, actualizo la lista de names
+      if(this.state.array.indexOf(this.state.title) === -1){
+        this.setState(state =>({
+          array: [...this.state.array, this.state.title], //le agrego el titulo actual que falta
+          names: list, //actualiza la lista, sin el titulo actual
+        }))
+      }
+
+      //si el array no tiene el nombre que quiero poner (o sea no se repite) y el titulo actual no se parece al que quiero poner, lo mando
+      if(this.state.array.indexOf(this.state.names[randomNumber] === -1) && this.state.title !== this.state.names[randomNumber]){
+        return randomNumber
+      }else{
+        this.arrayChecker()
+      }
     }
 
     render(){
       const options = this.state.options.map(road => 
-        <input type="image" src={road} className="flags" id={road} value={road} onClick={this.clickButton}/>)
+        <input type="image" src={road} className="flags" id={road} value={road} onClick={this.clickButton.bind(this)}/>)
 
       return(
         <div id="container">
