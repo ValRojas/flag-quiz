@@ -136,7 +136,7 @@ class GuessFlag extends React.Component{
 
       return(
         <div id="allElements">
-          <Link to="/Home"><h1>→</h1></Link>
+          <Link to="/flags-quiz"><h1>→</h1></Link>
           <div id="container">
             <h1 id="countryname">{this.state.title}</h1>
             <div id="flagsContainer">
