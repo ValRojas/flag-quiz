@@ -2,6 +2,10 @@
 
 Flags quiz made with ReactJs
 
+## Run demo
+
+https://valrojas.github.io/flags-quiz/
+
 ## Run the project locally
 
 In the project directory, you can run:
