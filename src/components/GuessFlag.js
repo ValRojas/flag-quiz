@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './GuessFlag.css';
 const wcc = require('world-countries-capitals');
 
@@ -37,9 +38,16 @@ const Options = FlagOptions()
 class GuessFlag extends React.Component{
     constructor(props){
       super(props)
-      this.state = {title: CountryName, options: Options, names: Names, array:[]}
+      this.state = {
+        title: CountryName, 
+        options: Options, 
+        names: Names, 
+        array:[]
+      }
       this.changleTitle = this.changleTitle.bind(this)
       this.arrayChecker = this.arrayChecker.bind(this)
+      this.restartApp = this.restartApp.bind(this)
+      this.deselector = this.deselector.bind(this)
     }
 
     //Clicked flag
@@ -68,39 +76,57 @@ class GuessFlag extends React.Component{
     changleTitle(){
       let number = this.arrayChecker()
 
-      this.setState(state =>({
-        title: this.state.names[number]
-      }))
+      if(this.state.names.length == 0){
+        this.setState(state =>({
+          title:"terminado!!!"
+        }))
+        setTimeout(() => {
+          this.restartApp()
+        }, 1000)
+
+      }else{
+        this.setState(state =>({
+          title: this.state.names[number]
+        }))
+      }
+      
     }
     
     //returns an index
     arrayChecker(){
-      //lista nombres banderas
       let list = this.state.names
 
-      //si la lista tiene el titulo, entonces se lo saco
-      //si no lo tiene, es por callback
-
+      //remove the title
       if(list.indexOf(this.state.title) >= 0){
         list.splice(list.indexOf(this.state.title), 1)
       }
-
-      //saco numero random con lista actualizada. Despues de haber sacado los que faltan
-      let randomNumber = Math.floor(Math.random() * list.length)
-
-      //si el array no tiene el titulo actual, lo agrego al array, además, actualizo la lista de names
       if(this.state.array.indexOf(this.state.title) === -1){
         this.setState(state =>({
-          array: [...this.state.array, this.state.title], //le agrego el titulo actual que falta
-          names: list, //actualiza la lista, sin el titulo actual
+          array: [...this.state.array, this.state.title], //add title to array 
+          names: list, //set the updated list
         }))
       }
 
-      //si el array no tiene el nombre que quiero poner (o sea no se repite) y el titulo actual no se parece al que quiero poner, lo mando
-      if(this.state.array.indexOf(this.state.names[randomNumber] === -1) && this.state.title !== this.state.names[randomNumber]){
-        return randomNumber
-      }else{
-        this.arrayChecker()
+      //returns random number (use as an index)
+      return Math.floor(Math.random() * list.length)
+    }
+
+    restartApp(){
+      this.deselector(Options)
+      const options = FlagOptions()
+
+      this.setState(state =>({
+        title: this.changleTitle(), 
+        options: options, 
+        names: Names, 
+        array:[]
+      }))
+    }
+    
+    deselector(options){ //
+      for(let i = 0; i < options.length; i++){
+        document.getElementById(options[i]).style.outline="none"
+        document.getElementById(options[i]).style.pointerEvents="all"
       }
     }
 
@@ -109,13 +135,15 @@ class GuessFlag extends React.Component{
         <input type="image" src={road} className="flags" id={road} value={road} onClick={this.clickButton.bind(this)}/>)
 
       return(
-        <div id="container">
-          <h1 id="countryname">{this.state.title}</h1>
+        <div id="allElements">
+          <Link to="/Home"><h1>→</h1></Link>
+          <div id="container">
+            <h1 id="countryname">{this.state.title}</h1>
+            <div id="flagsContainer">
+              {options}
+            </div>
 
-          <div id="flagsContainer">
-            {options}
           </div>
-
         </div>
       )
     }

@@ -1,5 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+#allElements{
+    display: flex;
+    flex-direction: row;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active { text-decoration: none;
+    color: rgb(248, 248, 248);
+    cursor:pointer;
+}
+
 /*Flag content*/
 #flagsContainer{
+    background-image:linear-gradient(200deg, rgba(214, 214, 214, 0.486), rgba(228, 228, 228, 0.664)), url("https://media.istockphoto.com/vectors/black-outlined-world-map-vector-id936410448?k=20&m=936410448&s=612x612&w=0&h=zV3IsMGqiFvWgO8nMlbNbqM2GUWv7ITaRBfyU4mw8Ss="); 
+    background-size:cover;
+    background-attachment: inherit;
+    background-repeat: no-repeat;
+    background-position:center;
     background-color:rgb(248, 248, 248);
     border-radius: 5px;
     width: 700px;
@@ -15,15 +35,13 @@ button {
   }
 */
 #countryname{
+    font-family: 'Fjalla One', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 23px;
+    color: #232229;
+    font-size: 35px;
     border-radius: 5px;
-    width: 450px;
-    height: 45px;
-    background-image:linear-gradient(200deg, rgba(22, 18, 31, 0.014), rgba(0, 0, 0, 0.527)), url("https://i.pinimg.com/736x/d1/63/80/d16380167c4036f23ecd01b6977897fe.jpg");
 }
 .flags{
     height: 80px;
@@ -31,54 +49,44 @@ button {
     margin: 25px 27px;
 }
 
-.flags:hover{
+.flags:hover {
     outline: 4px solid rgb(160, 151, 153);
 }
-/*Side*/
-@media(max-width: 730px){
-    #flagsContainer{
-        width: 450px;
-        height: 450px;
-        padding: 15px;
-    }
-    .flags{
-        height: 70px;
-        width: 110px;
-        margin: 20px 18px;
-    }
-}
+
 
 /*Phone*/
-@media(max-width: 530px){
+@media(max-width: 600px){
+
     #countryname{
-        width: 320px;
+        font-size: 30px;
     }
     #flagsContainer{
-        width: 290px;
-        height: 520px;
-        padding: 15px;
+        width: 320px;
+        height: 650px;
+        padding:0px
     }
     .flags{
-        height: 55px;
-        width: 95px;
-        margin: 14px 25px;
+        height: 65px;
+        width: 105px;
+        margin: 20px 26px;
+    }
+    #countryname{
+        font-size: 35px;
     }
 }
 
 
 /*Min*/
 @media(max-height: 500px){
-    #title{
-        font-size: 20px;
-        height: 30px;
-    }
     #flagsContainer{
+        background-color:azure;
         width: 450px;
-        height: 150px;
+        height: 220px;
+        padding:0px;
     }
     .flags{
-        height: 35px;
-        width: 60px;
-        margin: 7px 25px;
+        height: 50px;
+        width: 75px;
+        margin: 10px 18px;
     }
 }
