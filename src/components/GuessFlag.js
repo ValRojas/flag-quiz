@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import './GuessFlag.css';
 const wcc = require('world-countries-capitals');
 
-let Names = []
+let Names = [];
+let repeat;
 
 //Creates other flag options
 const FlagOptions = function(){
@@ -66,8 +67,12 @@ class GuessFlag extends React.Component{
         this.setState(state =>({
           title:":)",
         }))
-        setTimeout(() => {
 
+        if(repeat){
+          clearInterval(repeat);
+        }
+        
+        repeat = setInterval(() => {
           this.restartApp()
         }, 1000)
 
@@ -129,7 +134,6 @@ class GuessFlag extends React.Component{
           </header>     
 
           <div id="container">
-          <h1> options {this.state.options.length} + names {this.state.names.length}</h1>
             <h1 id="countryname">{this.state.title}</h1>
             <div id="flagsContainer">
               {options}
