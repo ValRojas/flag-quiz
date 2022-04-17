@@ -29,7 +29,7 @@ const Options = FlagOptions()
 class GuessFlag extends React.Component{
     constructor(props){
       super(props)
-      this.state = {title: Names[1], options: Options, names: Names,}
+      this.state = {title: Names[Math.floor(Math.random() * (11 - 1) + 1)], options: Options, names: Names,}
       this.changleTitle = this.changleTitle.bind(this)
       this.arrayChecker = this.arrayChecker.bind(this)
       this.restartApp = this.restartApp.bind(this)
@@ -129,6 +129,7 @@ class GuessFlag extends React.Component{
           </header>     
 
           <div id="container">
+          <h1> options {this.state.options.length} + names {this.state.names.length}</h1>
             <h1 id="countryname">{this.state.title}</h1>
             <div id="flagsContainer">
               {options}
