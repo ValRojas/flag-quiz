@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
-#allElements{
+header{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    color: white; 
+    font-family: 'Comfortaa', cursive;
+    font-size: 13px;
+}
+#backMenu{
+    background-color:skyblue;
+    border: 5px outset rgb(89, 161, 189);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 a:link,
@@ -12,7 +28,6 @@ a:active { text-decoration: none;
     color: rgb(248, 248, 248);
     cursor:pointer;
 }
-
 /*Flag content*/
 #flagsContainer{
     background-image:linear-gradient(200deg, rgba(214, 214, 214, 0.486), rgba(228, 228, 228, 0.664)), url("https://media.istockphoto.com/vectors/black-outlined-world-map-vector-id936410448?k=20&m=936410448&s=612x612&w=0&h=zV3IsMGqiFvWgO8nMlbNbqM2GUWv7ITaRBfyU4mw8Ss="); 
