@@ -15,7 +15,7 @@ class Home extends React.Component{
 
           <div id="Games-container">
             <div id="choose" className="GuessFlag">
-              <div id="emoji">⛺</div>
+              <div id="emoji">🧩</div>
               <h2>Flags</h2>        
               <p>A country name will be shown to you, guess the flag that belongs to it</p> 
               <Link to="/GuessFlag"><button id="redirect">start playing →</button></Link>  

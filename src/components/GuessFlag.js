@@ -2,14 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './GuessFlag.css';
 const wcc = require('world-countries-capitals');
-
-let Names = [];
 let repeat;
-
 //Creates other flag options
 const FlagOptions = function(){
-  let array = []
-  let randomNum = Math.floor(Math.random() * (12 - 1) + 1) //random number to hide chosen flag
+  let Names = [], array = []
 
    //keep looping till completes twelve unrepeated flags
   for(let i = 0; array.length < 12; i++){
@@ -22,19 +18,24 @@ const FlagOptions = function(){
       array.push(randomFlag)
       Names.push(select)
     }
-  }
-  return array
+  }  
+  return {array, Names}
 }
+
 const Options = FlagOptions()
 
 class GuessFlag extends React.Component{
     constructor(props){
       super(props)
-      this.state = {title: Names[Math.floor(Math.random() * (11 - 1) + 1)], options: Options, names: Names,}
+      this.state = {
+        title: Options["Names"][Math.floor(Math.random() * (11 - 1) + 1)],
+        options: Options["array"],
+        names: Options["Names"],
+        showMessage: false,
+      }
       this.changleTitle = this.changleTitle.bind(this)
       this.arrayChecker = this.arrayChecker.bind(this)
       this.restartApp = this.restartApp.bind(this)
-      this.deselector = this.deselector.bind(this)
     }
 
     //Clicked flag
@@ -67,10 +68,6 @@ class GuessFlag extends React.Component{
         this.setState(state =>({
           title:":)",
         }))
-
-        if(repeat){
-          clearInterval(repeat);
-        }
         
         repeat = setInterval(() => {
           this.restartApp()
@@ -83,7 +80,7 @@ class GuessFlag extends React.Component{
       }
       
     }
-    
+
     //returns an index
     arrayChecker(){
       let list = this.state.names
@@ -100,24 +97,30 @@ class GuessFlag extends React.Component{
       return Math.floor(Math.random() * list.length)
     }
 
+    showMessage(){
+      this.setState(state =>({
+        showMessage: false,
+      }))
+      this.restartApp()
+    }
+
     restartApp(){
-      this.deselector(Options)
-      const options = FlagOptions()
+      for(let i = 0; i < this.state.options.length; i++){  //Gets rid of green outlines
+        document.getElementById(this.state.options[i]).style.outline="none"
+        document.getElementById(this.state.options[i]).style.pointerEvents="all"
+      }
+      const Options = FlagOptions()
 
       this.setState(state =>({
-        options: options, 
-        names: Names,
+        options: Options["array"],
+        names: Options["Names"],
       }))
+      
+      //resets interval, prevents loop
+      clearInterval(repeat);
       this.changleTitle()
-    }
-    
-    deselector(options){ //Gets rid of green outlines
-      for(let i = 0; i < options.length; i++){
-        document.getElementById(options[i]).style.outline="none"
-        document.getElementById(options[i]).style.pointerEvents="all"
-      }
-    }
-    
+    }    
+
     render(){
       const options = this.state.options.map(road => 
         <input type="image" src={road} className="flags" id={road} value={road} onClick={this.clickButton.bind(this)}/>)
@@ -134,6 +137,7 @@ class GuessFlag extends React.Component{
           </header>     
 
           <div id="container">
+            {this.state.showMessage && <button onClick={this.showMessage.bind(this)}>play again</button>}
             <h1 id="countryname">{this.state.title}</h1>
             <div id="flagsContainer">
               {options}
