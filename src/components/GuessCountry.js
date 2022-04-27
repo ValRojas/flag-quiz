@@ -3,15 +3,7 @@ import { Link } from 'react-router-dom'
 import './GuessCountry.css'
 const wcc = require('world-countries-capitals');
 
-//en qué consiste?
-/*
- Aparece una bandera en pantalla, dele estilo preguntads
- abajo de ell o de preferencia al costado, cuatro opciones de nombres
- Cuando se elije una opcion incorrecta, boton se pone en rojo y no se puede clickear más hasta elegir la correcta
- Cuando se elije opcion correcta, se actualiza y cambia la badera seleccionada y los nombres a elegir.
- Se van sumando puntos al costado, por niveles. 
-*/
-
+let repeat;
 //Creates options
 const FlagOptions = function(){
   let Names = []
@@ -25,25 +17,65 @@ const FlagOptions = function(){
   } 
   return Names
 }
+
 const Options = FlagOptions()
 
 class GuessCountry extends React.Component{
     constructor(props){
       super(props)
       this.state = {
-        options: Options,
-        correct: Options[Math.floor(Math.random() * (6 - 1) + 1)]
+        options: Options, // array nombre de banderas
+        correct: Options[Math.floor(Math.random() * (6 - 1) + 1)] //almacena un elemento del array | nombre bandera
       }
+      this.restartApp = this.restartApp.bind(this)
     }
   
+    clickButton(e){
+      let selected = e.target.value
+
+      if(selected === this.state.correct){
+        document.getElementById(selected).style.outline="3px solid green";
+
+        repeat = setInterval(() => {
+          this.restartApp()
+        }, 1000)
+      }else{
+        document.getElementById(selected).style.outline="3px solid red";
+        setTimeout(() => {
+          document.getElementById(selected).style.outline="1px solid rgb(17, 52, 66)";
+        }, 1000)
+
+       }
+    }
+
+    restartApp(){
+      for(let i = 0; i < this.state.options.length; i++){  //Gets rid of green outline
+        document.getElementById(this.state.options[i]).style.outline="1px solid rgb(17, 52, 66)";
+      }
+
+      const Options = FlagOptions()
+
+      this.setState(state =>({
+        options: Options,
+        correct: Options[Math.floor(Math.random() * (6 - 1) + 1)],
+      }))
+
+      clearInterval(repeat);      
+    }
+
     render(){
       //data
-      const flagName = wcc.getCountryDetailsByName(this.state.correct);
-      const flagImg = flagName[0]['flag']
+      const flagName = wcc.getCountryDetailsByName(this.state.correct); //this returns object
+      const flagImg = flagName[0]['flag'] //link
 
       //renders
-      const renderFlag = <input class="chosenFlag" type="image" src={flagImg} id={flagName} value={flagName}/>
-      const buttons = this.state.options.map(road => <button id={flagName} value={flagName}>{road}</button>)      
+      const renderFlag = <input class="chosenFlag" type="image" src={flagImg} id="chosenFlag"/>
+      
+      const buttons = this.state.options.map(road => <button 
+        id={road} 
+        value={road}
+        onClick={this.clickButton.bind(this)}
+        >{road}</button>)      
 
       return(
         <div>

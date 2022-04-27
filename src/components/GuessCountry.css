@@ -12,14 +12,18 @@
     margin: 15px;
 }
 button{
+    border:none;
+    cursor: pointer;
     height: 80px;
     width: 310px;
     margin: 10px 20px;
+    outline: 1px solid rgb(17, 52, 66);
 }
 
 .chosenFlag{
-    width: 200px;
-    height: 120px;
+    width: 190px;
+    height: 110px;
+    cursor: default;
 }
 
 
