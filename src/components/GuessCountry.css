@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 .buttons{    
     background-image:linear-gradient(200deg, rgba(214, 214, 214, 0.486), rgba(228, 228, 228, 0.664)), url("https://media.istockphoto.com/vectors/black-outlined-world-map-vector-id936410448?k=20&m=936410448&s=612x612&w=0&h=zV3IsMGqiFvWgO8nMlbNbqM2GUWv7ITaRBfyU4mw8Ss="); 
     background-size:cover;
@@ -26,4 +28,43 @@ button{
     cursor: default;
 }
 
+.points{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 5px;
+    font-size: 23px;
+    font-family: 'Fjalla One', sans-serif;
+}
 
+/*Phone*/
+@media(max-width: 600px){
+    .buttons{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 300px;
+        height: 550px;
+    }
+    button{
+        height: 100px;
+    }
+}
+
+/*Min*/
+@media(max-height: 500px){
+    .chosenFlag{
+        width: 140px;
+        height: 75px;
+    }
+    .buttons{
+        width: 450px;
+        height: 200px;
+        padding:0px;
+    }
+    button{
+        height: 70px;
+        width: 110px;
+        margin: 10px 18px;
+    }
+}

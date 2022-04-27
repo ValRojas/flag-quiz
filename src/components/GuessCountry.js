@@ -25,7 +25,10 @@ class GuessCountry extends React.Component{
       super(props)
       this.state = {
         options: Options, // array nombre de banderas
-        correct: Options[Math.floor(Math.random() * (6 - 1) + 1)] //almacena un elemento del array | nombre bandera
+        correct: Options[Math.floor(Math.random() * (6 - 1) + 1)], //almacena un elemento del array | nombre bandera
+        wins: 0,
+        lose: 0,
+
       }
       this.restartApp = this.restartApp.bind(this)
     }
@@ -35,12 +38,20 @@ class GuessCountry extends React.Component{
 
       if(selected === this.state.correct){
         document.getElementById(selected).style.outline="3px solid green";
+        this.setState(state =>({
+          wins: state.wins + 1
+        }))
 
         repeat = setInterval(() => {
           this.restartApp()
         }, 1000)
       }else{
         document.getElementById(selected).style.outline="3px solid red";
+
+        this.setState(state =>({
+          lose: state.lose + 1
+        }))
+
         setTimeout(() => {
           document.getElementById(selected).style.outline="1px solid rgb(17, 52, 66)";
         }, 1000)
@@ -69,7 +80,7 @@ class GuessCountry extends React.Component{
       const flagImg = flagName[0]['flag'] //link
 
       //renders
-      const renderFlag = <input class="chosenFlag" type="image" src={flagImg} id="chosenFlag"/>
+      const renderFlag = <input class="chosenFlag" type="image" src={flagImg} id="chosenFlag" alt={this.state.correct}/>
       
       const buttons = this.state.options.map(road => <button 
         id={road} 
@@ -89,10 +100,17 @@ class GuessCountry extends React.Component{
           </header>
 
           <div id="container">
-            {renderFlag}
+            <div class="points">
+              <div style={{color: "green"}}>{this.state.wins}</div>
+              <div> - </div>
+              <div style={{color: "red"}}>{this.state.lose}</div>
+            </div>            
+            {renderFlag}    
+            
             <div class="buttons">
               {buttons}
             </div>
+
           </div>
 
         </div>
